@@ -242,4 +242,32 @@ a:hover {
 
 This CSS rule removes the underline when the user hovers over a link. These state-based styles provide interactive and dynamic visual feedback to users.
 
-![Alt stylestate]()
+**Example**
+
+![Alt stylestate](https://github.com/adityahongal/css/blob/main/images/styling%20element%20based%20on%20state.png)
+
+### 🥠 Combining Selectors and Combinators
+
+It's essential to understand that you can combine multiple selectors and combinators in CSS, creating more specific rules. For instance:
+
+```css
+/* Selects any <span> inside a <p> inside an <article> */
+article p span {
+}
+
+/* Selects any <p> directly after a <ul> directly after an <h1> */
+h1 + ul + p {
+}
+```
+
+You can also combine different types together. Try adding the following to your code:
+
+```css
+body h1 + p .special {
+  color: yellow;
+  background-color: black;
+  padding: 5px;
+}
+```
+
+This rule styles any element with a class of `special` that is inside a `<p>`, which comes directly after an `<h1>`, which is inside the `<body>`. Combining selectors and combinators provides a powerful way to precisely target and style specific elements in your HTML structure.
