@@ -110,4 +110,39 @@ h1 {
 
 4. Save both HTML and CSS files, then reload the page in a web browser. The level one heading should now appear in red.
 
+### 🥠 Styling HTML elements
 
+By making our heading red, we have already demonstrated that we can target and style an HTML element. We do this by targeting an element selector — this is a selector that directly matches an HTML element name. To target all paragraphs in the document, you would use the selector `p`. To turn all paragraphs green, you would use:
+
+```css
+p {
+  color: green;
+}
+```
+
+To target multiple selectors simultaneously, separate them with a comma. If you want both paragraphs and list items to be green, your rule would look like this:
+
+```css
+p,
+li {
+  color: green;
+}
+```
+
+This CSS rule applies the green color to both paragraphs (`p`) and list items (`li`). This way, you can efficiently style multiple elements with similar properties.
+
+### 🥠 Changing the default behavior of elements
+
+When browsers render well-marked HTML documents, they apply default styles for readability. Headings are typically large and bold, and lists have bullets. These defaults are part of the browser's internal stylesheets, ensuring basic legibility.
+
+However, you might desire a different style than the browser's default. In such cases, you can choose the HTML element you want to change and use a CSS rule to alter its appearance. For example, to remove bullets from an unordered list (`<ul>`), you can use the following CSS rule:
+
+```css
+li {
+  list-style-type: none;
+}
+```
+
+This CSS rule targets list items (`li`) and sets the `list-style-type` property to `none`, effectively removing the bullets. It demonstrates how CSS allows you to customize the visual presentation of HTML elements beyond the default browser styles.
+
+### 🥠 
