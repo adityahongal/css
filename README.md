@@ -182,3 +182,33 @@ li.special {
 ```
 
 This syntax means "target any `li` element that has a class of `special." If you use this, you can only apply the class to an `<li>` element, not a `<span>` or another element.
+
+### 🥠 Styling things based on location
+
+To style elements differently based on their location in the document, you can use selectors. Let's explore two of them: the descendant combinator and the next-sibling combinator.
+
+1. **Descendant Combinator:**
+To select an `<em>` that is nested inside an `<li>`, use the descendant combinator (a space between selectors):
+
+   ```css
+   li em {
+     color: rebeccapurple;
+   }
+   ```
+
+This selects any `<em>` element inside an `<li>`. In your example, the `<em>` in the third list item should turn purple, but the one inside the paragraph remains unchanged.
+
+2. **Next-sibling Combinator:**
+   To style a paragraph that directly follows a heading at the same hierarchy level, use the next-sibling combinator (`+`):
+
+   ```css
+   h1 + p {
+     font-size: 200%;
+   }
+   ```
+
+This rule selects a `<p>` element that is a direct sibling and comes immediately after an `<h1>`. Try adding this rule to your stylesheet.
+
+**Example**
+
+![Alt stylelocation]()
