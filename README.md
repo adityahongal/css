@@ -211,4 +211,7 @@ This rule selects a `<p>` element that is a direct sibling and comes immediately
 
 **Example**
 
-![Alt stylelocation]()
+![Alt stylelocation](https://github.com/adityahongal/css/blob/main/images/styling%20things%20based%20on%20location.png)
+
+
+
