@@ -24,7 +24,9 @@ li.special {
     color: orange;
     font-weight: bold;
   }
-  
+
+/* Descendant combinators & next-sibling combinator */
+
 li em {
     color: rebeccapurple;
   }
@@ -32,4 +34,15 @@ li em {
 h1 + p {
     font-size: 200%;
   }
+
+/* Styling based on the state */
+
+a:link {
+    color: pink;
+  }
+  
+a:visited {
+    color: green;
+  }
+  
   

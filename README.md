@@ -214,4 +214,32 @@ This rule selects a `<p>` element that is a direct sibling and comes immediately
 ![Alt stylelocation](https://github.com/adityahongal/css/blob/main/images/styling%20things%20based%20on%20location.png)
 
 
+### 🥠 Styling things based on state
 
+The ability to style elements based on their state is an essential aspect of CSS. A common example of this is styling links, which have different states like unvisited, visited, hovered, focused, or active. CSS allows you to target and style these states differently.
+
+For instance, you can style unvisited links in pink and visited links in green with the following CSS:
+
+```css
+a:link {
+  color: pink;
+}
+
+a:visited {
+  color: green;
+}
+```
+
+In this example, `a:link` targets unvisited links, and `a:visited` targets visited links.
+
+You can further modify the link's appearance when the user hovers over it, for example, by removing the underline:
+
+```css
+a:hover {
+  text-decoration: none;
+}
+```
+
+This CSS rule removes the underline when the user hovers over a link. These state-based styles provide interactive and dynamic visual feedback to users.
+
+![Alt stylestate]()
