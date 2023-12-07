@@ -145,4 +145,40 @@ li {
 
 This CSS rule targets list items (`li`) and sets the `list-style-type` property to `none`, effectively removing the bullets. It demonstrates how CSS allows you to customize the visual presentation of HTML elements beyond the default browser styles.
 
-### 🥠 
+### 🥠 Adding a Class
+
+So far, we've styled elements based on their HTML element names, which affects all elements of that type in the document. To style a specific subset without changing others, you can add a class to the HTML element and target that class in your CSS.
+
+1. Add a class attribute to the second list item in your HTML document:
+   
+   ```html
+   <ul>
+     <li>Item one</li>
+     <li class="special">Item two</li>
+     <li>Item <em>three</em></li>
+   </ul>
+   ```
+
+2. Target the class "special" in your CSS file using a period (.):
+
+   ```css
+   .special {
+     color: orange;
+     font-weight: bold;
+   }
+   ```
+
+   Save and refresh the page to see the result.
+
+Now, any element with the class "special" will have the same appearance. For instance, you can apply the class to a `<span>` in a paragraph to make it orange and bold.
+
+Sometimes, you might encounter rules with a selector that combines the HTML element selector and the class:
+
+```css
+li.special {
+  color: orange;
+  font-weight: bold;
+}
+```
+
+This syntax means "target any `li` element that has a class of `special." If you use this, you can only apply the class to an `<li>` element, not a `<span>` or another element.
