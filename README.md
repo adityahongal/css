@@ -752,3 +752,9 @@ This behavior allows for graceful degradation, where new or unsupported CSS feat
 }
 ```
 
+
+## Simple Biography Page
+
+![Alt biopage](https://github.com/adityahongal/css/blob/main/images/simple%20biography%20page.png)
+
+
