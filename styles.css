@@ -52,7 +52,7 @@ a:visited {
 */
 
 /* The calc() function */
-
+/*
 .outer {
     border: 5px solid black;
   }
@@ -62,5 +62,16 @@ a:visited {
     width: calc(90% - 30px);
     background-color: rebeccapurple;
     color: white;
+  } 
+*/
+
+/* Transform function */
+
+.box {
+    margin: 30px;
+    width: 200px;
+    height: 200px;
+    background-color: rebeccapurple;
+    transform: rotate(0.8turn);
   }
   
