@@ -271,3 +271,249 @@ body h1 + p .special {
 ```
 
 This rule styles any element with a class of `special` that is inside a `<p>`, which comes directly after an `<h1>`, which is inside the `<body>`. Combining selectors and combinators provides a powerful way to precisely target and style specific elements in your HTML structure.
+## How CSS is structured ?
+
+### 🧃 Applying CSS to HTML
+
+There are three methods of applying CSS to a document: with an external stylesheet, with an internal stylesheet, and with inline styles.
+
+#### External stylesheet
+
+Using an external stylesheet, where CSS is in a separate file with a .css extension, is a common and efficient way to apply styling to a document. This method allows you to link a single CSS file to multiple web pages, ensuring consistent styling across all of them.
+
+To reference an external CSS stylesheet in your HTML document, use the `<link>` element in the `<head>` section:
+
+```html
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>My CSS experiment</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <p>This is my first CSS example</p>
+  </body>
+</html>
+```
+
+The corresponding CSS file (`styles.css`) might look like this:
+
+```css
+h1 {
+  color: blue;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+p {
+  color: red;
+}
+```
+
+The `href` attribute of the `<link>` element should reference the file on your file system where the CSS is stored. This method makes it easy to manage styles across multiple pages while keeping the CSS code separate from the HTML.
+
+#### Internal stylesheet
+
+An internal stylesheet is CSS placed directly within an HTML document, enclosed in a `<style>` element within the `<head>` section. While it can be useful in specific situations, it becomes less efficient for sites with multiple pages.
+
+Here's a simplified example:
+
+```html
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>My CSS experiment</title>
+    <style>
+      h1 {
+        color: blue;
+        background-color: yellow;
+        border: 1px solid black;
+      }
+
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <p>This is my first CSS example</p>
+  </body>
+</html>
+```
+
+Internal stylesheets can be useful in scenarios where modifying external CSS files is restricted, such as within certain content management systems. However, for sites with multiple pages, using internal stylesheets becomes less efficient. To apply consistent styling across multiple pages, you would need to include the internal stylesheet in each page, potentially leading to maintenance challenges as simple styling changes may require edits to numerous pages.
+
+#### Inline styles
+
+Inline styles are CSS declarations applied to a single HTML element using the `style` attribute. While you may encounter them in certain situations, it's generally considered a less efficient and less maintainable way to apply styles.
+
+Here's a simplified example:
+
+```html
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>My CSS experiment</title>
+  </head>
+  <body>
+    <h1 style="color: blue; background-color: yellow; border: 1px solid black;">
+      Hello World!
+    </h1>
+    <p style="color: red;">This is my first CSS example</p>
+  </body>
+</html>
+```
+
+Avoid using inline styles whenever possible. They are less efficient for maintenance because a single styling change may require multiple edits within a single web page. Additionally, inline styles mix presentational code with HTML and content, making the code harder to read and understand. Keeping code and content separate facilitates easier maintenance.
+
+Inline styles are more common in restricted working environments, such as when a content management system (CMS) limits access to HTML body editing. You may also encounter inline styles in HTML emails to ensure compatibility with various email clients.
+
+#### 🧃 Selectors
+
+Selectors in CSS target HTML elements to apply styles. If you're experiencing issues with styles not being applied as expected, the problem might lie in the selector not matching the elements as intended.
+
+Here are some examples of valid selectors or lists of selectors:
+
+```css
+h1
+a:link
+.manythings
+#onething
+*
+.box p
+.box p:first-child
+h1, h2, .intro
+```
+
+- `h1`: Targets all `<h1>` elements.
+- `a:link`: Targets unvisited links.
+- `.manythings`: Targets elements with the class "manythings."
+- `#onething`: Targets the element with the ID "onething."
+- `*`: Targets all elements.
+- `.box p`: Targets paragraphs inside elements with the class "box."
+- `.box p:first-child`: Targets the first paragraph inside elements with the class "box."
+- `h1, h2, .intro`: Targets `<h1>` and `<h2>` elements, as well as elements with the class "intro."
+
+Understanding and using selectors correctly is crucial for applying styles to the desired HTML elements.
+
+#### 🧃 Cascade and Specificity
+
+In CSS, when two selectors target the same HTML element and have conflicting styles, the rules of cascade and specificity determine which style prevails. Consider the example below:
+
+```css
+.special {
+  color: red;
+}
+
+p {
+  color: blue;
+}
+```
+
+In the HTML document:
+
+```html
+<p class="special">What color am I?</p>
+```
+
+Here, the class selector `.special` and the element selector `p` both apply styles to the paragraph. The class selector prevails, rendering the text red. The cascade rule dictates that conflicting styles are replaced by styles appearing later in the stylesheet.
+
+However, if the styles for `p` were defined as follows:
+
+```css
+p {
+  color: red;
+}
+
+p {
+  color: blue;
+}
+```
+
+The paragraph text would be blue because the later declaration replaces the conflicting earlier one.
+
+Understanding specificity is crucial. In cases where a class and an element selector conflict, the class is more specific and takes precedence. Experimenting with your own HTML and CSS can help reinforce these concepts. Remember, recognizing potential conflicts and understanding specificity are vital for resolving styling issues in CSS.
+
+#### 🧃 Properties and Values
+
+CSS, at its core, comprises two essential components:
+
+1. **Properties:** Human-readable identifiers that specify which stylistic features to modify. Examples include font-size, width, and background-color.
+
+2. **Values:** Each property is assigned a value, indicating how to style the specified feature.
+
+A CSS declaration consists of a property-value pair. For instance, in the declaration `color: blue`, "color" is the property, and "blue" is the value.
+
+Declarations are organized within CSS Declaration Blocks. A block contains one or more declarations, enclosed in curly braces.
+
+CSS rulesets (or rules) are formed by pairing declaration blocks with selectors. A rule defines how styling should be applied to specific elements. For example, the rule for `h1` might set the color property to blue.
+
+CSS properties and values are case-insensitive. The property and value are separated by a colon (:).
+
+Note: If a property or value is unknown or invalid, the declaration is ignored by the browser's CSS engine.
+
+Note: In CSS, US spelling is the standard. For example, "color" is used instead of "colour" for consistency and compatibility.
+
+#### 🧃 Functions
+
+In CSS, some values take the form of functions, and one example is the `calc()` function. This function allows for simple math within CSS, as demonstrated below:
+
+HTML:
+```html
+<div class="outer"><div class="box">The inner box is 90% - 30px.</div></div>
+```
+
+CSS:
+```css
+.outer {
+  border: 5px solid black;
+}
+
+.box {
+  padding: 10px;
+  width: calc(90% - 30px);
+  background-color: rebeccapurple;
+  color: white;
+}
+```
+
+The `calc()` function, in this case, calculates the width of the inner box to be 90% of the containing block width, minus 30 pixels. This dynamic calculation allows for flexibility in responsive designs.
+
+**The Rendered example looks like**
+
+![Alt calcfunction](https://github.com/adityahongal/css/blob/main/images/calc%20function%20in%20CSS.png)
+
+
+#### 🧃 Transform functions
+
+In CSS, functions are also used for certain values, such as in the case of the `transform` property with the `rotate()` function. Here's an example:
+
+HTML:
+```html
+<div class="box"></div>
+```
+
+CSS:
+```css
+.box {
+  margin: 30px;
+  width: 200px;
+  height: 200px;
+  background-color: rebeccapurple;
+  transform: rotate(0.8turn);
+}
+```
+
+In this example, the `rotate()` function is applied to the `transform` property, causing the `.box` element to rotate by 0.8 turns. Functions like these provide a powerful way to manipulate and animate elements in CSS.
+
+**Example looks like**
+
+![Alt transformfunction](https://github.com/adityahongal/css/blob/main/images/transform%20function%20in%20css.png)
+
+
+
