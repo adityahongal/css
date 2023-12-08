@@ -758,3 +758,341 @@ This behavior allows for graceful degradation, where new or unsupported CSS feat
 ![Alt biopage](https://github.com/adityahongal/css/blob/main/images/simple%20biography%20page.png)
 
 
+
+## CSS building blocks
+
+### 🏗️ CSS selectors
+
+In CSS, selectors are used to target the HTML elements on our web pages that we want to style. There are a wide variety of CSS selectors available, allowing for fine-grained precision when selecting elements to style.
+
+#### What is a Selector ?
+
+A CSS selector is a pattern that identifies which HTML elements should have specific styles applied to them. It specifies the target elements for a CSS rule. These selectors can vary, ranging from simple elements like `h1` to more specific targets like `.special` for a class. The selected elements are referred to as the subject of the selector.
+
+####  Selector lists
+
+When you have multiple elements or classes that should have the same CSS styles, you can combine them into a selector list. This allows you to apply the same rule to multiple selectors simultaneously. For instance, if you want both `h1` and the class `.special` to have the color blue, you can write separate rules or combine them into a selector list:
+
+Separate rules:
+
+```css
+h1 {
+  color: blue;
+}
+
+.special {
+  color: blue;
+}
+```
+
+Combined into a selector list:
+
+```css
+h1, .special {
+  color: blue;
+}
+```
+
+You can include white space before or after the comma for readability, and you may choose to put each selector on a new line for better organization:
+
+```css
+h1,
+.special {
+  color: blue;
+}
+```
+
+Keep in mind that if there's an invalid selector in the list, the entire rule will be ignored. For example, if you mistakenly write `..special` instead of `.special`, the entire rule will be deemed invalid:
+
+```css
+h1, ..special {
+  color: blue;
+}
+```
+
+In this case, neither the `h1` nor the `.special` will be styled because of the invalid selector.
+
+### Types of selectors
+
+Selectors in CSS can be categorized into different groups, each serving a specific purpose. Here are a few key groups:
+
+1. **Type, Class, and ID Selectors:**
+   - **Type Selector:** Targets HTML elements based on their type (e.g., `h1`, `p`).
+     ```css
+     h1 {
+       /* Styles for h1 elements */
+     }
+     ```
+
+   - **Class Selector:** Targets elements with a specific class attribute value.
+     ```css
+     .box {
+       /* Styles for elements with class="box" */
+     }
+     ```
+
+   - **ID Selector:** Targets elements with a specific ID attribute value.
+     ```css
+     #unique {
+       /* Styles for elements with id="unique" */
+     }
+     ```
+
+2. **Attribute Selectors:**
+   - Targets elements based on the presence or value of their attributes.
+     ```css
+     a[title] {
+       /* Styles for anchor elements with a title attribute */
+     }
+
+     a[href="https://example.com"] {
+       /* Styles for anchor elements with an href attribute equal to "https://example.com" */
+     }
+     ```
+
+3. **Pseudo-classes and Pseudo-elements:**
+   - **Pseudo-classes:** Selects elements based on certain states or conditions (e.g., `:hover` for hovered elements).
+     ```css
+     a:hover {
+       /* Styles for hovered anchor elements */
+     }
+     ```
+
+   - **Pseudo-elements:** Selects a specific part of an element (e.g., `::first-line` for the first line of text in a block).
+     ```css
+     p::first-line {
+       /* Styles for the first line of text in a paragraph */
+     }
+     ```
+
+4. **Combinators:**
+   - Combines multiple selectors to target specific elements or relationships between elements (e.g., descendant combinator, child combinator).
+     ```css
+     article > p {
+       /* Styles for paragraphs that are direct children of article elements */
+     }
+     ```
+
+Understanding these groups of selectors provides a powerful toolkit for styling HTML documents with CSS.
+
+### 🏗️ Universal selectors
+
+The universal selector in CSS, denoted by an asterisk (*), selects all elements in a document or within a specific parent element when combined with other selectors and a descendant combinator.
+
+One common use case is in "reset stylesheets," where it helps remove default browser styling. The universal selector is employed selectively for specific situations where global changes are needed.
+
+Here's a simple example of using the universal selector in a CSS reset stylesheet:
+
+```css
+/* Reset styles to remove default browser styling */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Add other reset styles as needed */
+}
+
+/* Your additional styles go here */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+}
+```
+
+In this example, the universal selector (`*`) is used to set `margin`, `padding`, and `box-sizing` to create a consistent starting point for styling. These styles are then overridden or extended as needed for specific elements in the document.
+
+#### Using the universal selector to make your selectors easier to read
+
+The universal selector can enhance readability in certain situations.
+
+```css
+/* Original selector without universal selector */
+article :first-child {
+  font-weight: bold;
+}
+
+/* Improved readability with universal selector */
+article *:first-child {
+  font-weight: bold;
+}
+```
+
+In the improved version, the universal selector (`*`) makes it clearer that we are targeting any element that is the first child of an `<article>` element or the first child of any descendant element within an `<article>`. This helps avoid confusion with similar selectors and enhances code readability.
+
+### 🏗️ Class selector in detail
+
+The case-sensitive class selector starts with a dot (.) character. It will select everything in the document with that class applied to it.
+
+
+```css
+/* Selects everything with the specified class */
+.highlight {
+  /* Styles for elements with the "highlight" class */
+}
+
+/* Targeting specific elements with the class */
+h1.highlight {
+  /* Styles for <h1> elements with the "highlight" class */
+}
+
+span.highlight {
+  /* Styles for <span> elements with the "highlight" class */
+}
+
+/* Targeting an element with multiple classes applied */
+.element1.element2 {
+  /* Styles for elements with both "element1" and "element2" classes */
+}
+```
+
+In the simplified version, the class selector is used to select everything with the specified class. Additionally, specific elements with the class are targeted using the type selector (e.g., `h1`, `span`). The example also demonstrates how to target an element with multiple classes applied, ensuring that the styles are applied only when both classes are present.
+
+### 🏗️ Attribute Selectors
+
+Elements can have attributes that give further detail about the element being marked up. In CSS you can use attribute selectors to target elements with certain attributes. This lesson will show you how to use these very useful selectors.
+
+#### Presence and Value selectors
+
+These selectors enable the selection of an element based on the presence of an attribute alone (e.g., href) or various matches against the value of the attribute.
+
+
+| Selector            | Example                               | Description                                                                                                       |
+|---------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| `[attr]`            | `a[title]`                            | Matches elements with an `attr` attribute (whose name is the value in square brackets).                           |
+| `[attr=value]`      | `a[href="https://example.com"]`       | Matches elements with an `attr` attribute whose value is exactly `value` — the string inside the quotes.           |
+| `[attr~=value]`     | `p[class~="special"]`                  | Matches elements with an `attr` attribute whose value is exactly `value` or contains `value` in its list of values. |
+| `[attr\|=value]`    | `div[lang\|="zh"]`                    | Matches elements with an `attr` attribute whose value is exactly `value` or begins with `value` followed by a hyphen. |
+
+#### Substring matching selectors
+
+These selectors provide advanced matching options for substrings within attribute values. For instance, if you have classes like box-warning and box-error and want to select elements whose class attribute starts with the string "box-", you can use [class^="box-"] to match both (similar to [class|="box"] described earlier).
+
+This enables more flexible and precise attribute value matching.
+
+
+```markdown
+| Selector        | Example              | Description                                                    |
+| --------------- | -------------------- | -------------------------------------------------------------- |
+| [attr^=value]   | li[class^="box-"]    | Matches elements with an attr attribute, beginning with value.  |
+| [attr$=value]   | li[class$="-box"]    | Matches elements with an attr attribute, ending with value.     |
+| [attr*=value]   | li[class*="box"]     | Matches elements with an attr attribute, containing value.      |
+```
+
+This table provides a concise overview of the attribute selectors along with examples and their corresponding descriptions.
+
+### 🏗️ Case sensitivity
+
+To perform case-insensitive matching for attribute values, add the `i` flag before the closing bracket. This flag instructs the browser to match ASCII characters case-insensitively. Without the flag, the matching is done based on the case-sensitivity of the document language, which is case-sensitive in HTML.
+
+For example:
+
+- `a[title="example" i]` matches elements with a title attribute, case-insensitively equal to "example".
+- `input[type="text" i]` matches input elements with a type attribute, case-insensitively equal to "text".
+
+This approach ensures that the attribute values are matched without considering case sensitivity.
+
+
+### 🏗️ Pseudo classes and Pseudo elements
+
+#### Pseudo classes
+
+A pseudo-class is a selector that selects elements that are in a specific state, e.g. they are the first element of their type, or they are being hovered over by the mouse pointer. They tend to act as if you had applied a class to some part of your document, often helping you cut down on excess classes in your markup, and giving you more flexible, maintainable code.
+
+Pseudo-classes are keywords that start with a colon. For example, `:hover` is a pseudo-class.
+
+For example instead of adding a class to the first paragraph, you can use the `:first-child` pseudo-class selector to style the first paragraph within an article. This approach avoids the need to add or modify classes in the HTML, providing a more flexible and maintenance-friendly solution:
+
+CSS:
+
+```css
+article p:first-child {
+  font-size: 120%;
+  font-weight: bold;
+}
+```
+
+HTML:
+
+```html
+<article>
+  <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo
+    melon azuki bean garlic.</p>
+
+  <p>Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard
+    greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.</p>
+</article>
+```
+
+With this CSS rule, the first paragraph inside the `<article>` element will have a font size of 120% and a bold font weight, without the need for adding specific classes to paragraphs.
+
+#### User-action pseudo classes
+
+Some pseudo-classes only apply when the user interacts with the document in some way. These user-action pseudo-classes, sometimes referred to as dynamic pseudo-classes, act as if a class had been added to the element when the user interacts with it. Examples include:
+
+- `:hover` — mentioned above; this only applies if the user moves their pointer over an element, typically a link.
+- `:focus` — only applies if the user focuses the element by clicking or using keyboard controls.
+
+### Pseudo elements
+
+Pseudo-elements behave in a similar way. However, they act as if you had added a whole new HTML element into the markup, rather than applying a class to existing elements.
+
+Pseudo-elements start with a double colon `::`. `::before` is an example of a pseudo-element.
+
+For example `::first-line` pseudo-element selector allows you to style the first line of a block-level element. Here's an example:
+
+```css
+/* ::first-line pseudo-element */
+article p::first-line {
+  font-size: 120%;
+  font-weight: bold;
+}
+```
+
+In this example, the first line of each paragraph (`<p>`) inside an `<article>` element will have an increased font size and bold font weight.
+
+This is a convenient way to style specific parts of text without the need for additional HTML elements or classes. The `::first-line` pseudo-element automatically selects the first line, making it adaptable to changes in content or layout.
+
+#### Combining pseudo-classes and pseudo-elements
+
+If you wanted to make the first line of the first paragraph bold you could chain the `:first-child` and `::first-line` selectors together. Try editing the previous live example so it uses the following CSS. We are saying that we want to select the first line, of the first `<p>` element, which is inside an `<article>` element.
+
+```css
+/* ::first-line pseudo-element of the first paragraph inside an article */
+article p:first-child::first-line {
+  font-size: 120%;
+  font-weight: bold;
+}
+```
+
+#### Generating content with ::before and ::after
+
+The `::before` and `::after` pseudo-elements are used to generate content before and after an element's actual content, respectively. They are often used to add decorative elements or additional information without altering the HTML markup.
+
+Here's a simple example of how to use `::before` and `::after` to add quotes to a blockquote:
+
+```css
+/* Add quotes before and after the content of blockquote */
+blockquote::before {
+  content: "\201C"; /* Unicode character for left double quotation mark */
+}
+
+blockquote::after {
+  content: "\201D"; /* Unicode character for right double quotation mark */
+}
+```
+
+And here's the corresponding HTML:
+
+```html
+<blockquote>
+  This is a quote.
+</blockquote>
+```
+
+In this example, the `::before` pseudo-element adds an opening double quotation mark before the content of the `blockquote`, and the `::after` pseudo-element adds a closing double quotation mark after the content.
+
+You can use the `content` property to specify what content should be generated. It can be text, an image, or other CSS properties. Keep in mind that the `content` property is mandatory for `::before` and `::after` pseudo-elements to generate content.
+
+### 🏗️ Combinators
+
