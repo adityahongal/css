@@ -314,7 +314,7 @@ p {
 
 The `href` attribute of the `<link>` element should reference the file on your file system where the CSS is stored. This method makes it easy to manage styles across multiple pages while keeping the CSS code separate from the HTML.
 
-#### Internal stylesheet
+### Internal stylesheet
 
 An internal stylesheet is CSS placed directly within an HTML document, enclosed in a `<style>` element within the `<head>` section. While it can be useful in specific situations, it becomes less efficient for sites with multiple pages.
 
@@ -373,7 +373,7 @@ Avoid using inline styles whenever possible. They are less efficient for mainten
 
 Inline styles are more common in restricted working environments, such as when a content management system (CMS) limits access to HTML body editing. You may also encounter inline styles in HTML emails to ensure compatibility with various email clients.
 
-#### 🧃 Selectors
+### 🧃 Selectors
 
 Selectors in CSS target HTML elements to apply styles. If you're experiencing issues with styles not being applied as expected, the problem might lie in the selector not matching the elements as intended.
 
@@ -401,7 +401,7 @@ h1, h2, .intro
 
 Understanding and using selectors correctly is crucial for applying styles to the desired HTML elements.
 
-#### 🧃 Cascade and Specificity
+### 🧃 Cascade and Specificity
 
 In CSS, when two selectors target the same HTML element and have conflicting styles, the rules of cascade and specificity determine which style prevails. Consider the example below:
 
@@ -439,7 +439,7 @@ The paragraph text would be blue because the later declaration replaces the conf
 
 Understanding specificity is crucial. In cases where a class and an element selector conflict, the class is more specific and takes precedence. Experimenting with your own HTML and CSS can help reinforce these concepts. Remember, recognizing potential conflicts and understanding specificity are vital for resolving styling issues in CSS.
 
-#### 🧃 Properties and Values
+### 🧃 Properties and Values
 
 CSS, at its core, comprises two essential components:
 
@@ -459,7 +459,7 @@ Note: If a property or value is unknown or invalid, the declaration is ignored b
 
 Note: In CSS, US spelling is the standard. For example, "color" is used instead of "colour" for consistency and compatibility.
 
-#### 🧃 Functions
+### 🧃 Functions
 
 In CSS, some values take the form of functions, and one example is the `calc()` function. This function allows for simple math within CSS, as demonstrated below:
 
@@ -489,7 +489,7 @@ The `calc()` function, in this case, calculates the width of the inner box to be
 ![Alt calcfunction](https://github.com/adityahongal/css/blob/main/images/calc%20function%20in%20CSS.png)
 
 
-#### 🧃 Transform functions
+### 🧃 Transform functions
 
 In CSS, functions are also used for certain values, such as in the case of the `transform` property with the `rotate()` function. Here's an example:
 
@@ -515,5 +515,240 @@ In this example, the `rotate()` function is applied to the `transform` property,
 
 ![Alt transformfunction](https://github.com/adityahongal/css/blob/main/images/transform%20function%20in%20css.png)
 
+### 🧃 @rules
 
+CSS @rules, pronounced "at-rules," provide instructions for how CSS should behave or perform certain actions. One common @rule is @import, which is used to import another stylesheet into the current CSS file:
+
+```css
+@import "styles2.css";
+```
+
+Another frequently used @rule is @media, which is employed to create media queries. Media queries enable the application of conditional styling based on certain conditions, such as the size of the browser viewport. In the example below, the default background color for the `<body>` element is set to pink. However, a media query is used to apply a blue background if the viewport is wider than 30em:
+
+```css
+body {
+  background-color: pink;
+}
+
+@media (min-width: 30em) {
+  body {
+    background-color: blue;
+  }
+}
+```
+
+This example demonstrates how @media is utilized to create a responsive design, changing the background color based on the width of the viewport.
+
+### 🧃 Shorthands
+
+In CSS, certain properties, such as font, background, padding, border, and margin, are referred to as shorthand properties. Shorthand properties allow you to set multiple values in a single line, simplifying the code.
+
+For instance, the following line of code using the `padding` shorthand property:
+
+```css
+padding: 10px 15px 15px 5px;
+```
+
+is equivalent to these four lines of code:
+
+```css
+padding-top: 10px;
+padding-right: 15px;
+padding-bottom: 15px;
+padding-left: 5px;
+```
+
+Similarly, the following line using the `background` shorthand property:
+
+```css
+background: red url(bg-graphic.png) 10px 10px repeat-x fixed;
+```
+
+is equivalent to these five lines:
+
+```css
+background-color: red;
+background-image: url(bg-graphic.png);
+background-position: 10px 10px;
+background-repeat: repeat-x;
+background-attachment: fixed;
+```
+
+These shorthand properties provide a more concise way to express multiple values for a set of related properties.In CSS, certain properties, such as font, background, padding, border, and margin, are referred to as shorthand properties. Shorthand properties allow you to set multiple values in a single line, simplifying the code.
+
+For instance, the following line of code using the `padding` shorthand property:
+
+```css
+padding: 10px 15px 15px 5px;
+```
+
+is equivalent to these four lines of code:
+
+```css
+padding-top: 10px;
+padding-right: 15px;
+padding-bottom: 15px;
+padding-left: 5px;
+```
+
+Similarly, the following line using the `background` shorthand property:
+
+```css
+background: red url(bg-graphic.png) 10px 10px repeat-x fixed;
+```
+
+is equivalent to these five lines:
+
+```css
+background-color: red;
+background-image: url(bg-graphic.png);
+background-position: 10px 10px;
+background-repeat: repeat-x;
+background-attachment: fixed;
+```
+
+These shorthand properties provide a more concise way to express multiple values for a set of related properties.
+
+### 🧃 Whitespaces
+
+In CSS, white space refers to actual spaces, tabs, and new lines. Similar to how browsers ignore white space in HTML, they also disregard white space inside CSS. While white space itself doesn't affect the styling, its value lies in improving readability.
+
+For instance, the following declarations are valid CSS:
+
+```css
+margin: 0 auto;
+padding-left: 10px;
+```
+
+However, the following declarations are invalid due to spacing errors:
+
+```css
+margin: 0auto;
+padding- left: 10px;
+```
+
+In the first example, `0auto` is not recognized as a valid value for the `margin` property, as it should be two separate values: `0` and `auto`. In the second example, the browser doesn't recognize `padding-` as a valid property because of the space issue. It should be `padding-left` without any spaces.
+
+To ensure correctness, always separate distinct values with at least one space and keep property names and values together as single, unbroken strings.
+
+
+## How CSS works ?
+
+#### 💮 How does CSS actually work ?
+
+When a browser displays a webpage, it undergoes a series of stages:
+
+1. **Loading HTML:** The browser fetches the HTML content, often from the network.
+
+2. **Creating the DOM:** The browser converts the HTML into a DOM (Document Object Model), representing the document in the computer's memory.
+
+3. **Fetching Resources:** The browser fetches additional resources linked in the HTML, such as images and linked CSS. JavaScript is handled separately.
+
+4. **Parsing CSS:** The browser parses the fetched CSS, organizing rules into different categories based on selectors (e.g., element, class, ID).
+
+5. **Building the Render Tree:** A render tree is created by associating styles with corresponding nodes in the DOM, forming the structure of the visual representation (render tree).
+
+6. **Layout:** The render tree is arranged in the intended structure after applying styles.
+
+7. **Painting:** The final visual display of the page is shown on the screen.
+
+This simplified overview outlines the major steps browsers take to render a webpage. Note that different browsers may handle these steps in varying ways.
+
+
+![Alt CSS works](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works/rendering.svg)
+
+
+#### 💮 Above the DOM
+
+The DOM (Document Object Model) has a tree-like structure where each element, attribute, and text in the markup language becomes a node in the tree. Nodes are characterized by their relationships with other nodes, with some elements acting as parents to child nodes, and child nodes having siblings.
+
+Understanding the DOM is crucial for designing, debugging, and maintaining CSS. The DOM serves as the meeting point for your CSS and the document's content. When using browser DevTools, you navigate the DOM to select items and inspect applied rules. This understanding facilitates effective interaction with the DOM to analyze and manipulate the document's structure and styling.
+
+#### 💮 A real DOM representation
+
+Instead of a lengthy explanation, let's examine an example to understand how a real HTML snippet is transformed into a DOM.
+
+Consider the following HTML code:
+
+```html
+<p>
+  Let's use:
+  <span>Cascading</span>
+  <span>Style</span>
+  <span>Sheets</span>
+</p>
+```
+
+In the DOM, the node corresponding to the `<p>` element is a parent. Its children include a text node and three nodes corresponding to the `<span>` elements. The `<span>` nodes are also parents with text nodes as their children:
+
+```
+P
+├─ "Let's use:"
+├─ SPAN
+|  └─ "Cascading"
+├─ SPAN
+|  └─ "Style"
+└─ SPAN
+    └─ "Sheets"
+```
+
+This representation illustrates how a browser interprets the HTML snippet, rendering the DOM tree and then displaying it in the browser accordingly.
+
+#### 💮 Applying CSS to the DOM
+
+Let's imagine we add some CSS to our document to style it. The original HTML is as follows:
+
+```html
+<p>
+  Let's use:
+  <span>Cascading</span>
+  <span>Style</span>
+  <span>Sheets</span>
+</p>
+```
+
+Suppose we apply the following CSS to it:
+
+```css
+span {
+  border: 1px solid black;
+  background-color: lime;
+}
+```
+
+The browser parses the HTML and creates a DOM from it. Next, it parses the CSS. Since the only rule available in the CSS has a `span` selector, the browser quickly applies that rule to each one of the three `<span>` elements. Finally, it paints the final visual representation on the screen.
+
+The updated output shows the styled `<span>` elements with a black border and lime background.
+
+#### output
+
+![Alt CSStoDOM](https://github.com/adityahongal/css/blob/main/images/applying%20css%20to%20dom.png)
+
+
+#### 💮 What happens if a browser encounters CSS it doesn't understand?
+
+If a browser encounters a CSS selector or declaration it doesn't recognize, it simply ignores it and moves on to the next part of the CSS. This behavior is useful for handling cases where there might be misspellings, errors, or new features not supported by certain browsers.
+
+For example, in the following code, the British English spelling "colour" is used, which is incorrect. As a result, the color property is not recognized, but the other CSS rules are applied:
+
+```html
+<p>I want this text to be large, bold and blue.</p>
+```
+
+```css
+p {
+  font-weight: bold;
+  colour: blue; /* incorrect spelling of the color property */
+  font-size: 200%;
+}
+```
+
+This behavior allows for graceful degradation, where new or unsupported CSS features can be used as enhancements without causing errors. For instance, if a browser doesn't support the calc() function, a fallback value in pixels can be provided, ensuring that older browsers use the fallback while newer ones interpret and apply the calc() value:
+
+```css
+.box {
+  width: 500px;
+  width: calc(100% - 50px);
+}
+```
 
